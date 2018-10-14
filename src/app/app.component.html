@@ -1,0 +1,28 @@
+<app-dk
+(countRadioButtonSelectionChanged)="onEmployeeSelectedRadioButtonChanged($event)"></app-dk>
+<h3>Filter by town</h3><tr><td><input type="text" [(ngModel)]="d" ></td>
+ <td> <button (click)="s()">filter</button></td></tr>
+  <table  border="2px"  >
+    <tr>
+      <th>ID</th>
+    <th>Name</th>
+    <th>CITY</th>
+    <th>D.O.B</th>
+    <th>Dept</th>
+  </tr>
+ 
+<ng-container *ngFor="let d of (filter||emd)">
+  <tr *ngIf="filter==d.city||selectedEmployeeCountRadioButton==d.dept||selectedEmployeeCountRadioButton=='all'">
+    <td>{{d.id|ds:d.id}}</td>
+    <td>{{d.name}}</td>
+    <td>{{d.city|uppercase}}</td>
+    <td>{{d.dob|date:fulldate|uppercase}}</td>
+    <td>{{d.dept|uppercase}}</td>
+  </tr>
+      </ng-container>
+      
+  </table>
+  <div *ngIf="!emd||emd.lenght==0">
+ NO Data
+  </div>
+  
